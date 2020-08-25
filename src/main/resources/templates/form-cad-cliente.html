@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro de Clientes</title>
+	<script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
+
+<body>
+	<h1>Locação de Veículos SHX</h1>
+	<thead>
+		<tr>
+			<th>Cadastrar Novo Cliente</th>
+			<td>
+				<form id="formAdicionaCliente" th:object="${cliente}" action="#" th:actions="@{/cliente/cadastro}"
+					method="post">
+
+					<input name="nome" type="text" th:field="*{nome}" placeholder="Preencha o nome do Cliente" required="required">
+
+					<input name="cpf" type="text" th:field="*{cpf}" placeholder="Preencha o CPF do Cliente" required="required">
+
+					<p>Data de Nascimento:
+						<input name="dataNasc" type="date" th:field="*{dataNasc}" /></p>
+
+					<button type="submit">Cadastrar Cliente</button>
+				</form>
+
+			</td>
+		</tr>
+	</thead>
+	<table id="tabelaDeClientes">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Data de Nascimento</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody id="lista_cliente_id">
+		
+		</tbody>
+	</table>
+</body>
+<script th:src="@{/js/formCliente.js}" type="text/javascript"></script>
+<script th:src="@{/js/obterClienteBanco.js}" type="text/javascript"></script>

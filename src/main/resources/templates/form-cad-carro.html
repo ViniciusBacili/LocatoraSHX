@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro de Carros</title>
+	<script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
+
+<body>
+	<h1>Locação de Veículos SHX</h1>
+	<thead>
+		<tr>
+			<th>Cadastrar Novo Carro</th>
+			<td>
+				<form id="formAdicionaCarro" th:object="${carro}" action="#" th:actions="@{/carro/cadastro}"
+					method="post">
+
+					<input name="marca" type="text" th:field="*{marca}" placeholder="Preencha a marca do Carro" required="required">
+
+					<input name="nome" type="text" th:field="*{nome}" placeholder="Preencha o nome do Carro" required="required">
+
+					<input name="combustivel" type="text" th:field="*{combustivel}" placeholder="Tipo de Combustivel" required="required">
+
+					<input name="diaria" type="text" th:field="*{diaria}" placeholder="Valor da Diaria" required="required">
+
+					<p>Ano do Veiculo:
+						<input name="dataAno" type="date" th:field="*{dataAno}" /></p>
+
+					<p>Ano do Modelo:
+						<input name="dataModelo" type="date" th:field="*{dataModelo}" /></p>
+
+					<button type="submit">Cadastrar Carro</button>
+				</form>
+
+			</td>
+		</tr>
+	</thead>
+	<table id="tabelaDeCarros">
+		<thead>
+			<tr>
+				<th>Marca</th>
+				<th>Nome</th>
+				<th>Ano</th>
+				<th>Modelo</th>
+				<th>Combustível</th>
+				<th>Diaria</th>
+				<th>Status</th>
+				<th>Alugar</th>
+			</tr>
+		</thead>
+		<tbody id="lista_carro_id">
+		
+		</tbody>
+	</table>
+</body>
+<script th:src="@{/js/formCarro.js}" type="text/javascript"></script>
+<script th:src="@{/js/obterCarroBanco.js}" type="text/javascript"></script>
+
+<script>	
+	
+		function alugar(id) {
+			
+			if (at = 1){
+				window.location.href = "http://localhost:8080/carro/cadastro?aluguel=" + id;
+			}
+			else alert("Esse curso não está ativo");
+		}
+</script>
